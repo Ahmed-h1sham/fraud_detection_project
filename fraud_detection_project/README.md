@@ -1,3 +1,8 @@
+# **Healthcare Provider Fraud Detection Project**
+
+Machine Learning · Fraud Analytics · CMS Claims Data
+
+---
 
 ## 📌 **Project Overview**
 
@@ -17,8 +22,8 @@ We engineered provider-level features, trained multiple models, and evaluated th
 
 ## 👥 **Team Members**
 
-Ahmed Hisham 
-13007014
+**Ahmed Hisham**
+ID: **13007014**
 
 ---
 
@@ -50,14 +55,69 @@ fraud_detection_project/
 
 The dataset is too large to upload to GitHub.
 
-Download from Kaggle:
+Download it from Kaggle:
 🔗 [https://www.kaggle.com/rohitrox/healthcare-provider-fraud-detection-analysis](https://www.kaggle.com/rohitrox/healthcare-provider-fraud-detection-analysis)
 
 After downloading:
 
-1. Extract the ZIP file
-2. Place all CSV files inside the **data/** folder
+1. Extract the ZIP
+2. Move all CSVs into the **data/** folder
 3. Run Notebook 01
+
+---
+
+## ▶️ **How to Reproduce the Project**
+
+### **1️⃣ Clone the repository**
+
+```bash
+git clone https://github.com/Ahmed-h1sham/fraud_detection_project.git
+cd fraud_detection_project
+```
+
+---
+
+### **2️⃣ Create and activate a virtual environment (`.venv`)**
+
+#### **Windows (PowerShell)**
+
+```bash
+python -m venv .venv
+.venv\Scripts\Activate
+```
+
+#### **Mac / Linux**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+---
+
+### **3️⃣ Install dependencies**
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+```
+
+---
+
+### **4️⃣ Launch Jupyter Notebook**
+
+```bash
+jupyter notebook
+```
+
+This opens Jupyter in your browser.
+
+---
+
+### **5️⃣ Run the project notebooks in order**
+
+1 → `01_data_exploration_and_feature_engineering.ipynb`
+2 → `02_modeling.ipynb`
+3 → `03_evaluation.ipynb`
 
 ---
 
@@ -65,28 +125,26 @@ After downloading:
 
 ### **1️⃣ 01_data_exploration_and_feature_engineering.ipynb**
 
-* Loads and inspects all raw datasets
+* Loads and inspects raw datasets
 * Cleans missing values
-* Converts date columns
-* Calculates Length of Stay (LOS)
-* Aggregates inpatient & outpatient claims per provider
+* Converts date fields
+* Computes LOS (Length of Stay)
+* Aggregates inpatient & outpatient claims by provider
 * Merges with fraud labels
-* Saves final dataset:
-  **provider_features_final.csv**
+* Saves `provider_features_final.csv`
 
 ---
 
 ### **2️⃣ 02_modeling.ipynb**
 
 * Loads engineered dataset
-* Performs train/test split
+* Creates train/test split
 * Trains:
 
   * Logistic Regression
   * Random Forest Classifier
-* Prints full classification metrics
+* Prints full model metrics
 * Saves best model + scaler
-* Performs prediction testing
 
 Random Forest performed best.
 
@@ -94,17 +152,17 @@ Random Forest performed best.
 
 ### **3️⃣ 03_evaluation.ipynb**
 
-* Generates Confusion Matrix
-* Generates ROC Curve
-* Plots Feature Importance
-* Provides interpretation of fraud indicators
-* Summarizes business impact of results
+* Plots Confusion Matrix
+* Plots ROC Curve
+* Displays Feature Importance
+* Interprets results
+* Discusses impact of fraud detection
 
 ---
 
 ## 📊 **Model Results Summary**
 
-### **Random Forest (Best Model)**
+### ⭐ **Random Forest (Best Model)**
 
 | Metric                | Score |
 | --------------------- | ----- |
@@ -113,54 +171,29 @@ Random Forest performed best.
 | **Recall (Fraud)**    | 67%   |
 | **F1 Score**          | 0.68  |
 
-The model detects **~2 out of 3 fraudulent providers**, which is strong given the imbalanced dataset.
+The model detects **~2 out of 3 fraudulent providers**, strong performance for imbalanced data.
 
 ---
 
 ## 🔍 **Key Fraud Indicators**
 
-The strongest predictors of fraud were:
+1. Maximum inpatient LOS
+2. Total inpatient reimbursement
+3. Outpatient claim count
+4. Total outpatient reimbursement
 
-1. **Maximum inpatient length of stay**
-2. **Total inpatient reimbursement**
-3. **Number of outpatient claims**
-4. **Total outpatient reimbursement**
-
-These reflect patterns commonly associated with suspicious billing behavior.
+These align with known fraud patterns.
 
 ---
 
 ## 💼 **Business Impact**
 
-This model can:
+This model enables:
 
-* Prioritize provider audits
-* Reduce fraudulent payments
-* Improve allocation of investigative resources
-* Support automated fraud surveillance systems
-
-A recall of **67%** means the model captures most fraudulent providers, offering high practical value.
-
----
-
-## ▶️ **How to Reproduce the Project**
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Ahmed-h1sham/fraud_detection_project.git
-   cd fraud_detection_project
-   ```
-
-2. Install dependencies:
-
-3. Download the dataset from Kaggle and place it in `data/`.
-
-4. Run the notebooks **in order**:
-
-   * Notebook 01 → feature engineering
-   * Notebook 02 → modeling
-   * Notebook 03 → evaluation
+* Faster provider audits
+* Better allocation of investigative resources
+* Reduced fraudulent payments
+* Real-time fraud surveillance potential
 
 ---
 
@@ -170,7 +203,8 @@ A recall of **67%** means the model captures most fraudulent providers, offering
 * Pandas
 * NumPy
 * Scikit-Learn
-* Matplotlib / Seaborn
+* Matplotlib
+* Seaborn
 * Jupyter Notebook
 
 ---
@@ -179,15 +213,14 @@ A recall of **67%** means the model captures most fraudulent providers, offering
 
 Located under **reports/**:
 
-* **technical_report.pdf** — Full written analysis
-* **presentation.pptx** — 10-minute presentation
+* `technical_report.pdf` — Full documentation
+* `presentation.pptx` — 10-minute presentation
 
 ---
 
 ## 📌 **Future Work**
 
-* Use XGBoost or LightGBM
-* Apply SMOTE to improve fraud recall
-* Incorporate diagnosis code embeddings
-* Deploy model as REST API for real-time scoring
-
+* XGBoost / LightGBM
+* SMOTE balancing
+* NLP on diagnosis codes
+* Deploy model as an API
